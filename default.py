@@ -1,6 +1,6 @@
 #! /usr/bin/env morseexec
 
-""" Basic MORSE simulation scene for <trial> environment
+""" Basic MORSE simulation scene for <Robot-Navigation-Morse> environment
 
 Feel free to edit this template as you like!
 """
@@ -72,21 +72,8 @@ laserscanner.properties(visible_arc=True)
 # the other available interfaces (like ROS, YARP...)
 robot.add_default_interface('socket')
 
-# # creates a new instance of the sensor
-# radaraltimeter = RadarAltimeter()
-#
-# # place your component at the correct location
-# radaraltimeter.translate(1.0, 0.0, 0.0)
-# radaraltimeter.rotate(0.0, 0.0, 0.0)
-#
-# robot.append(radaraltimeter)
-#
-# # define one or several communication interface, like 'socket'
-# radaraltimeter.add_interface('socket')
-
-
 # set 'fastmode' to True to switch to wireframe mode
-env = Environment('/home/mitul/Desktop/Software/blender_worlds/wall_obs.blend', fastmode = False)
+env = Environment('../wall_obs.blend', fastmode = False)
 
 env.set_camera_location([-18.0, -6.7, 10.8])
 env.set_camera_rotation([1.09, 0, -1.14])
@@ -130,24 +117,6 @@ z = (-0.2)
 bpy.context.scene.frame_set(frame_number)
 cylinder02.location = (x,y,z)
 cylinder02.keyframe_insert(data_path="location",index=-1)
-
-# # Plane02
-# spawn_range = [(-5, 6),(2, 11),(0,1)]
-# x = random.randrange(spawn_range[0][0], spawn_range[0][1])
-# y = random.randrange(spawn_range[1][0], spawn_range[1][1])
-# z = (2.51)
-# bpy.context.scene.frame_set(frame_number)
-# plane02.location = (x,y,z)
-# plane02.keyframe_insert(data_path="location",index=-1)
-#
-# # Plane05
-# spawn_range = [(-8, 6),(-15,-7),(0,1)]
-# x = random.randrange(spawn_range[0][0], spawn_range[0][1])
-# y = random.randrange(spawn_range[1][0], spawn_range[1][1])
-# z = (2.51)
-# bpy.context.scene.frame_set(frame_number)
-# plane05.location = (x,y,z)
-# plane05.keyframe_insert(data_path="location",index=-1)
 
 # Cylinder01
 spawn_range = [(-12, 10),(-9, 8),(0,1)]

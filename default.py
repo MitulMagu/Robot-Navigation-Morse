@@ -11,24 +11,11 @@ from random import randrange,randint
 import random
 from morse.sensors import *
 
-# Add the MORSE mascott, MORSY.
-# Out-the-box available robots are listed here:
-# http://www.openrobots.org/morse/doc/stable/components_library.html
-#
-# 'morse add robot <name> trial' can help you to build custom robots.
 robot = ATRV()
 
-# The list of the main methods to manipulate your components
-# is here: http://www.openrobots.org/morse/doc/stable/user/builder_overview.html
 robot.translate(0.0, 0.0, 0.9)
 robot.rotate(0.0, 0.0, 0.0)
 
-# Add a motion controller
-# Check here the other available actuators:
-# http://www.openrobots.org/morse/doc/stable/components_library.html#actuators
-#
-# 'morse add actuator <name> trial' can help you with the creation of a custom
-# actuator.
 motion = MotionVW()
 robot.append(motion)
 
@@ -37,21 +24,12 @@ robot.append(motion)
 # robot.append(keyboard)
 # keyboard.properties(ControlType = 'Position')
 
-# Add a pose sensor that exports the current location and orientation
-# of the robot in the world frame
-# Check here the other available actuators:
-# http://www.openrobots.org/morse/doc/stable/components_library.html#sensors
-#
-# 'morse add sensor <name> trial' can help you with the creation of a custom
-# sensor.
 pose = Pose()
 robot.append(pose)
 
-# creates a new instance of the actuator
 waypoint = Waypoint()
 
 waypoint.properties(ObstacleAvoidance=False)
-# place your component at the correct location
 waypoint.translate(x=0.2,y=0.0,z=0.9)
 waypoint.rotate(0.0, 0.0, 0.0)
 waypoint.add_interface('socket')
@@ -66,13 +44,8 @@ laserscanner.rotate(0.0, 0.0, 0.0)
 robot.append(laserscanner)
 laserscanner.add_interface('socket')
 laserscanner.properties(visible_arc=True)
-# To ease development and debugging, we add a socket interface to our robot.
-#
-# Check here: http://www.openrobots.org/morse/doc/stable/user/integration.html
-# the other available interfaces (like ROS, YARP...)
 robot.add_default_interface('socket')
 
-# set 'fastmode' to True to switch to wireframe mode
 env = Environment('../wall_obs.blend', fastmode = False)
 
 env.set_camera_location([-18.0, -6.7, 10.8])
@@ -144,5 +117,3 @@ z = (-0.2)
 bpy.context.scene.frame_set(frame_number)
 cylinder.location = (x,y,z)
 cylinder.keyframe_insert(data_path="location",index=-1)
-
-# frame_number += 2
